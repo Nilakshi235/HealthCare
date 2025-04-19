@@ -7,7 +7,11 @@ import pandas as pd
 import numpy as np
 import json
 import base64
+import os
 
+model_path = os.path.join(os.path.dirname(__file__), "scaler.pkl")
+with open(model_path, "rb") as f:
+    scaler = pickle.load(f)
 
 st.set_page_config(
     page_title="Healthcare System",
@@ -32,7 +36,7 @@ heart_disease_model = pickle.load(open("Heart Disease Model.pkl",'rb'))
 
 liver_model = pickle.load(open("Liver Disease Model.pkl", 'rb'))
 
-scaler = pickle.load(open("Scaler.pkl", 'rb'))
+scaler = pickle.load(open("scaler.pkl", 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
